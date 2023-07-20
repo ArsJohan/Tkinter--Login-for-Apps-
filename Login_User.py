@@ -31,7 +31,7 @@ class Login:
         self.name_text.grid(row=1, column=1, pady=20)
         self.password_text.grid(row=2, column=1, pady=20)
         
-        #Buttons
+        #Buttons Login and Register
         login_button = Button(self.mainFrame, text="Login", font=("Arial", 12), bg="lightblue", command=self.start_session)
         login_button.grid(row=3, column=0, pady=20)
 
@@ -39,9 +39,12 @@ class Login:
         register_button.grid(row=3, column=1, pady=20)
         
         self.root.mainloop()
-    
-    #Functions
-    def start_session(self):
+        
+    #Function star_session
+    #Verificated if user exist and password is correct then open other window call GUI_USER
+    #Show error if user or password is incorrect
+    #Locked the login if user try more than 3 times wrong password
+    def start_session(self): 
         for user in self.users:
             if user.name == self.name_text.get():
                 connected = user.connect(self.password_text.get())
@@ -58,8 +61,9 @@ class Login:
                 break
         else:
             messagebox.showerror("Login", "No found this account")
-    
-    def register(self):
+    #Fuction register
+    # Create a New User, add it to the list of users, show message "Register, Welcome User" and clean the text box
+    def register(self): 
         name = self.name_text.get()
         password = self.password_text.get()
         new_user = User(name, password)
