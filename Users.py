@@ -5,7 +5,7 @@ class User:
         self.password = password
         self.Attempts = 3 
         self.is_logged_in = False
-        User.num_users += 1
+        User.num_users +=1
         
     def connect(self, password=None, name = None):
         if password == None:
@@ -17,7 +17,7 @@ class User:
             self.is_logged_in = True
             return True
         else:
-            self.Attempts -= 1
+            self.Attempts -=1
             if self.Attempts > 0:
                 return 'Sorry, wrong password' + "\n" +f'You have {self.Attempts} more attempts'
             else:
