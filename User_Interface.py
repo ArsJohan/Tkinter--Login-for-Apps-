@@ -1,6 +1,5 @@
 from tkinter import *
 from tkinter import messagebox
-from Users import User
 from PIL import ImageTk, Image
 
 
