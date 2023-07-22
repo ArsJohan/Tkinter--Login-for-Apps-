@@ -2,26 +2,17 @@ class User:
     num_users = 0
     def __init__(self, name, password):
         self.name = name
-        self.password = password
-        self.Attempts = 3 
+        self.password = password 
         self.is_logged_in = False
         User.num_users +=1
         
-    def connect(self, password=None, name = None):
-        if password == None:
-            my_pass = input('Enter your password: ')
-        else: 
-            my_pass = password
-    
+    def connect(self,password):
+        my_pass = password
         if my_pass == self.password:
             self.is_logged_in = True
             return True
-        else:
-            self.Attempts -=1
-            if self.Attempts > 0:
-                return 'Sorry, wrong password' + "\n" +f'You have {self.Attempts} more attempts'
-            else:
-                return 'Your account is now locked'
+        else:  
+            return False
                 
     def disconnect(self):
         if self.is_logged_in:
