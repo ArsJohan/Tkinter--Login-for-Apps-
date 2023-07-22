@@ -1,4 +1,4 @@
 # Tkinter- Desktop -Project
-Login User c:
+Login user for apps desktops
 
 @ArsJohan
