@@ -1,3 +1,6 @@
+#This class will be used to create a user object.
+#If you have a other class of user or created a DATABASE class, you can delete this class.
+
 class User:
     num_users = 0
     def __init__(self, name, password):

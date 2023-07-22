@@ -3,57 +3,75 @@ from tkinter import messagebox
 from PIL import ImageTk, Image
 from Users import User
 from User_Interface import GUI_USER
+
 class Login:
     def __init__(self):
-        self.users = [User("Johan", "1234")]
+        self.users = [User("Johan", "1234")]#-> Here to save your users previous registered
         self.root = Tk()
         self.mainFrame = Frame(self.root)
-        self.mainFrame_img = Frame(self.root)
-        self.name_text = Entry(self.mainFrame, font=("Arial", 12), bg="lightblue", border=0)
-        self.password_text = Entry(self.mainFrame, font=("Arial", 12), bg="lightblue", show="*", border=0)
+        self.name_text = Entry(self.mainFrame, font=("Arial", 15), bg="white", border=0)
+        self.name_text.config(width=25)
+        self.password_text = Entry(self.mainFrame, font=("Arial", 15), bg="white", show="*", border=0)
+        self.password_text.config(width=25)
         
-        #Variables 
+        #Variables of the Properties
         color_background = "#fcfefd"
         color_font = "#071a3b"
-        #Ventana Principal.
+        x_label = 470
+        y_label =180
+        x_img = 50
+        y_img = 70
+        
+        #Main Window
         self.root.title("Login User")
-        self.root.geometry("600x400")
+        self.root.geometry("800x600")
         self.root.config(bg=color_background)
-        
+        self.root.resizable(False, False)
         #Frame
-        self.mainFrame.pack(fill=BOTH,side="right", expand=1)
-        self.mainFrame.config(width=400, height=400, borderwidth= 20, background= color_background) 
-        self.mainFrame_img.pack(fill=BOTH, side="left", expand=1)
-        self.mainFrame_img.config(width=400, height=400, background= color_background)
-        #image
-        img = ImageTk.PhotoImage(Image.open("Images\Logo.jpg"))
-        panel = Label(self.mainFrame_img, image=img, border=0)
-        panel.grid(row=0, column=0)
+        self.mainFrame.pack(fill=BOTH, expand=1)
+        self.mainFrame.config(background= color_background) 
+        #images
+        img = ImageTk.PhotoImage(Image.open("Tkinter-Project/images/Logo.jpg"))
+        panel = Label(self.mainFrame, image=img, border=0)
+        panel.place(x=x_img, y=y_img)
+        log_login = ImageTk.PhotoImage(Image.open("Tkinter-Project/images/user.png"))
+        log_panel = Label(self.mainFrame, image=log_login, border=0, bg=color_background)
+        log_panel.place(x=x_label+100, y=100)
         
+    
+        #Lines
+        line_V= Label(self.mainFrame, text="",background=color_font, borderwidth=0.1)
+        line_V.place(x=430, y=100,relheight=0.70)
         
+        line_UnderName= Label(self.mainFrame, text="",background="#FE6894", borderwidth=0.1)
+        line_UnderName.place(x=x_label, y=y_label+68,relwidth=0.35, relheight=0.0040)
+        line_UnderPass= Label(self.mainFrame, text="",background="#FE6894", borderwidth=0.1)
+        line_UnderPass.place(x=x_label, y=y_label+163,relwidth=0.35, relheight=0.0040)
+        
+        line_V_Button= Label(self.mainFrame, text="",background="#FE6894", borderwidth=0.1)
+        line_V_Button.place(x=x_label+140, y=y_label+220,relheight=0.060)
 
         #Labels
-        name_label = Label(self.mainFrame, text="Name", font=("Optima", 10),fg=color_font, background=color_background)
-        name_label.grid(row=0, column=0)
+        name_label = Label(self.mainFrame, text="Name", font=("Optima", 12, "bold"),fg=color_font, background=color_background, border=1)
+        name_label.place(x=x_label,y=y_label+10)
         self.error_name = Label(self.mainFrame, text="", font=("Optima", 8), fg="Red", background=color_background)
-        self.error_name.grid(row=2, column=0)
-        password_label = Label(self.mainFrame, text="Password", font=("Optima", 10),  fg=color_font, background=color_background)
-        password_label.grid(row=3, column=0)
+        self.error_name.place(x=x_label, y=y_label + 70)
+        password_label = Label(self.mainFrame, text="Password", font=("Optima",12, "bold"),  fg=color_font, background=color_background)
+        password_label.place(x=x_label, y=y_label + 110)
         self.error_password = Label(self.mainFrame, text="", font=("Optima", 8), fg="Red", background=color_background)
-        self.error_password.grid(row=5, column=0)
+        self.error_password.place(x=x_label, y=y_label +165)
         
         #Text Box
-        self.name_text.grid(row=1, column=0, pady=10)
-        self.password_text.grid(row=4, column=0, pady=10)
+        self.name_text.place(x=x_label, y=y_label+40)
+        self.password_text.place(x=x_label, y=y_label+135)
         
         
         #Buttons Login and Register
-        login_button = Button(self.mainFrame, text="Login", font=("Optima", 12), fg=color_font,bg="#28e0be",activebackground=color_font,activeforeground="#28e0be", command=self.start_session, border=0, width=15)
-        login_button.grid(row=6, column=0, pady=10)
+        login_button = Button(self.mainFrame, text="Sign In",font=("Optima", 13,"bold"), fg=color_font,bg=color_background,activebackground=color_background,activeforeground="#FE6894", command=self.start_session, border=0, cursor="hand2")
+        login_button.place(x=x_label+50, y=y_label+220)
+        register_button = Button(self.mainFrame, text="Sign Up",font=("Optima", 12, "bold"),fg=color_font,bg= color_background,activebackground=color_background, activeforeground="#FE6894", command=self.register, border=0, cursor="hand2")
+        register_button.place(x=x_label+160, y=y_label+220)
 
-        register_button = Button(self.mainFrame, text="Register", font=("Optima", 12),fg=color_font,bg="#28e0be",activebackground=color_font, activeforeground="#28e0be", command=self.register, border=0, width=10)
-        register_button.grid(row=7, column=0)
-        
         self.root.mainloop()
         
     #Function star_session
@@ -67,8 +85,8 @@ class Login:
                 if connected == True:
                     messagebox.showinfo("Login", f"Welcome back to the app {user.name}!\n")
                     self.root.destroy()
-                    GUI_USER(user) 
-                    #add when you want to close the window, then Logging
+                    GUI_USER(user) #--> Here put the name of the class of window what you prefer 
+                    #ALT + CLIC --> to open the class of window
                 else:
                     self.error_name.config(text="Incorrect Name or Incorrect password")
                     self.error_password.config(text="Incorrect Name or Incorrect password")
@@ -78,6 +96,7 @@ class Login:
         else:
              self.error_name.config(text="No found this account")
              self.error_password.config(text=None)
+             
     #Fuction register
     # Verified if the text box is not empty and the name and password are more than 3 characters
     # Verified if user not registered, then add it to the list of users
@@ -101,7 +120,3 @@ class Login:
             self.password_text.delete(0, END)
             self.name_text.focus()
         
-        
-if __name__ == "__main__":
-    Login()
-    #Only testing this window, not the main window
