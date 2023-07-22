@@ -3,6 +3,8 @@ from tkinter import messagebox
 from PIL import ImageTk, Image
 from Users import User
 
+
+
 class GUI_USER():
     def __init__(self,user):
         #Variables of Properties
@@ -29,9 +31,10 @@ class GUI_USER():
          self.root.mainloop()
         
     def Logout(self):
-        messagebox.showinfo("Logout","You are logged out")
+        messagebox.showinfo("Logout",self.user.disconnect())
         self.root.destroy()
 
 
 if __name__ == "__main__":
     GUI_USER(User("Johan","1234"))
+    #Only testing this window and apply new features 

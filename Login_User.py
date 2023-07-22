@@ -100,6 +100,8 @@ class Login:
             self.name_text.delete(0, END)
             self.password_text.delete(0, END)
             self.name_text.focus()
-            
+        
+        
 if __name__ == "__main__":
     Login()
+    #Only testing this window, not the main window

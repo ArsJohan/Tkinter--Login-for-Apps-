@@ -17,9 +17,9 @@ class User:
     def disconnect(self):
         if self.is_logged_in:
             self.is_logged_in = False
-            print(self.name, 'is now logged out')
+            return self.name +' is now logged out'
         else:
-            print('You are not logged in')
+            return 'You are not logged in'
         
         
     def __str__(self):
